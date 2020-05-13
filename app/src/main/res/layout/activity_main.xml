@@ -9,12 +9,16 @@
 
     <st235.com.github.flow_layout.FlowLayout
         android:id="@+id/flowLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:fl_gravity="left" />
+        app:fl_gravity="justify" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

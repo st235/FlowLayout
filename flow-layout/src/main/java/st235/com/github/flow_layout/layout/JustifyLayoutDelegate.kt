@@ -21,7 +21,7 @@ internal class JustifyLayoutDelegate: LayoutDelegate {
 
             var currentRow = 0
             var currentChildCount = 0
-            var justifyWidth = (layoutWidth - widths[currentRow].width) / (widths[currentRow].childCount - 1)
+            var justifyWidth = getJustifyWidth(layoutWidth,widths[currentRow].width, widths[currentRow].childCount)
             var currentLeft = layoutLeft
             var currentTop = layoutTop
 
@@ -48,7 +48,7 @@ internal class JustifyLayoutDelegate: LayoutDelegate {
                     currentRow++
                     currentLeft = layoutLeft
                     currentTop += maxRowHeight
-                    justifyWidth = (layoutWidth - widths[currentRow].width) / (widths[currentRow].childCount - 1)
+                    justifyWidth = getJustifyWidth(layoutWidth,widths[currentRow].width, widths[currentRow].childCount)
                     maxRowHeight = 0
                     currentChildCount = 1
                 }
@@ -67,5 +67,13 @@ internal class JustifyLayoutDelegate: LayoutDelegate {
                 currentLeft += childWidth + offset
             }
         }
+    }
+
+    private fun getJustifyWidth(layoutWidth: Int, rowWidth: Int, childCount: Int): Int {
+        if (childCount <= 1) {
+            return layoutWidth - rowWidth
+        }
+
+        return (layoutWidth - rowWidth) / (childCount - 1)
     }
 }
