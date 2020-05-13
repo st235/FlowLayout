@@ -4,6 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import st235.com.github.flow_layout.FlowLayout.Gravity.Companion.toGravity
+import st235.com.github.flow_layout.layout.*
+import st235.com.github.flow_layout.layout.LayoutDelegate
+import st235.com.github.flow_layout.layout.RightLayoutDelegate
+import st235.com.github.flow_layout.layout.RowInfo
 import kotlin.math.max
 
 typealias FlowLayoutParams = ViewGroup.MarginLayoutParams
@@ -12,16 +17,44 @@ class FlowLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
+    enum class Gravity(
+        internal val internalId: Int
+    ) {
+        LEFT(0),
+        RIGHT(1),
+        CENTER(2),
+        JUSTIFY(3);
+
+        internal companion object {
+            fun Int.toGravity(): Gravity =
+                values().find { it.internalId == this } ?: throw IllegalArgumentException("Cannot find suitable gravity")
+        }
+    }
+
+    private val layoutDelegate: LayoutDelegate
+
+    private var rowsWidth = mutableListOf<RowInfo>()
+
     init {
         setWillNotDraw(true)
+
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowLayout)
+
+        val gravity = typedArray.getInt(R.styleable.FlowLayout_fl_gravity, Gravity.LEFT.internalId).toGravity()
+        layoutDelegate = LayoutDelegateFactory().create(gravity)
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        rowsWidth.clear()
+
         val maxPaddedWidth = MeasureSpec.getSize(widthMeasureSpec) - paddingLeft - paddingRight
 
         var maxWidth = 0
         var maxHeight = 0
 
+        var currentChildCount = 0
         var currentState = 0
         var currentWidth = 0
         var currentHeight = 0
@@ -43,13 +76,16 @@ class FlowLayout @JvmOverloads constructor(
                 heightMeasureSpec, 0
             )
 
+            currentChildCount += 1
             currentWidth += child.measuredWidth + horizontalMargins
 
             if (currentWidth > maxPaddedWidth) {  // wrap to a new line
+                rowsWidth.add(RowInfo(currentWidth - (child.measuredWidth + horizontalMargins), currentChildCount - 1))
                 maxHeight += currentHeight
 
-               currentHeight = child.measuredHeight + verticalMargins
+                currentHeight = child.measuredHeight + verticalMargins
                 currentWidth = child.measuredWidth + horizontalMargins
+                currentChildCount = 1
             } else {  // stay on the same line
                 currentHeight = max(currentHeight, child.measuredHeight + verticalMargins)
             }
@@ -58,6 +94,8 @@ class FlowLayout @JvmOverloads constructor(
 
             currentState = View.combineMeasuredStates(currentState, child.measuredState)
         }
+
+        rowsWidth.add(RowInfo(currentWidth, currentChildCount))
 
         // the last line was not counted
         // as it was not wrapped
@@ -80,54 +118,7 @@ class FlowLayout @JvmOverloads constructor(
         left: Int, top: Int,
         right: Int, bottom: Int
     ) {
-        val layoutLeft = paddingLeft
-        val layoutRight = measuredWidth - paddingRight
-
-        val layoutTop = paddingTop
-        val layoutBottom = measuredHeight - paddingBottom
-
-        val layoutWidth = layoutRight - layoutLeft
-        val layoutHeight = layoutBottom - layoutTop
-
-        var maxRowHeight = 0
-
-        var currentLeft = layoutLeft
-        var currentTop = layoutTop
-
-        for (i in 0 until childCount) {
-            val child = getChildAt(i)
-            val params = child.getChildLayoutParams()
-
-            if (child.visibility == View.GONE) {
-                continue
-            }
-
-            child.measure(
-                MeasureSpec.makeMeasureSpec(layoutWidth, MeasureSpec.AT_MOST),
-                MeasureSpec.makeMeasureSpec(layoutHeight, MeasureSpec.AT_MOST)
-            )
-
-            val childWidth = child.measuredWidth + params.leftMargin + params.rightMargin
-            val childHeight = child.measuredHeight + params.topMargin + params.bottomMargin
-
-            // if current left is bigger than possible right bound
-            // we should wrap to a new line
-            if (currentLeft + childWidth > layoutRight) {
-                currentLeft = layoutLeft
-                currentTop += maxRowHeight
-                maxRowHeight = 0
-            }
-
-            child.layout(
-                currentLeft + params.leftMargin,
-                currentTop + params.topMargin,
-                currentLeft + child.measuredWidth + params.leftMargin,
-                currentTop + child.measuredHeight + params.topMargin
-            )
-
-            maxRowHeight = max(maxRowHeight, childHeight)
-            currentLeft += childWidth
-        }
+        layoutDelegate.layout(this, rowsWidth, left, top, right, bottom)
     }
 
     override fun checkLayoutParams(p: LayoutParams): Boolean = p is FlowLayoutParams
@@ -143,7 +134,7 @@ class FlowLayout @JvmOverloads constructor(
             LayoutParams.WRAP_CONTENT
         )
 
-    private fun View.getChildLayoutParams(): FlowLayoutParams {
+    internal fun View.getChildLayoutParams(): FlowLayoutParams {
         val params = layoutParams
         val childParams = if (!checkLayoutParams(params)) {
             generateDefaultLayoutParams()

@@ -35,6 +35,17 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 
 ## Usage
 
+| property | type | description |
+| ----- | ----- | ----- |
+| **fl_gravity** | enum | possible values is: left, right, center, justify |
+
+## Screens
+
+<img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/center.png" width="500" height="300">
+ <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/left.png" width="500" height="300">
+ <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/right.png" width="500" height="300">
+ <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/justify.png" width="500" height="300">
+
 ```xml
 
     <st235.com.github.flow_layout.FlowLayout
@@ -51,6 +62,10 @@ implementation 'com.github.st235:flow-layout:X.X.X'
     </st235.com.github.flow_layout.FlowLayout>
 
 ```
+
+## Xml attributes
+
+
 
 ## License
 
