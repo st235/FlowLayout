@@ -1,6 +1,9 @@
 package st235.com.github.flow_layout.layout
 
+import androidx.core.text.TextUtilsCompat
+import androidx.core.view.ViewCompat
 import st235.com.github.flow_layout.FlowLayout
+import java.util.*
 
 internal class LayoutDelegateFactory {
 
@@ -10,6 +13,24 @@ internal class LayoutDelegateFactory {
             FlowLayout.Gravity.RIGHT -> RightLayoutDelegate()
             FlowLayout.Gravity.CENTER -> CenterLayoutDelegate()
             FlowLayout.Gravity.JUSTIFY -> JustifyLayoutDelegate()
+            FlowLayout.Gravity.START -> {
+                if (isLtr()) {
+                    LeftLayoutDelegate()
+                } else {
+                    RightLayoutDelegate()
+                }
+            }
+            FlowLayout.Gravity.END -> {
+                if (isLtr()) {
+                    RightLayoutDelegate()
+                } else {
+                    LeftLayoutDelegate()
+                }
+            }
         }
+    }
+
+    private fun isLtr(): Boolean {
+        return TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_LTR
     }
 }

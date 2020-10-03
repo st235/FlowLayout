@@ -23,7 +23,9 @@ class FlowLayout @JvmOverloads constructor(
         LEFT(0),
         RIGHT(1),
         CENTER(2),
-        JUSTIFY(3);
+        JUSTIFY(3),
+        START(4),
+        END(5);
 
         internal companion object {
             fun Int.toGravity(): Gravity =
@@ -35,13 +37,15 @@ class FlowLayout @JvmOverloads constructor(
 
     private var rowsWidth = mutableListOf<RowInfo>()
 
+    private val layoutDelegateFactory = LayoutDelegateFactory()
+
     init {
         setWillNotDraw(true)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowLayout)
 
         val gravity = typedArray.getInt(R.styleable.FlowLayout_fl_gravity, Gravity.LEFT.internalId).toGravity()
-        layoutDelegate = LayoutDelegateFactory().create(gravity)
+        layoutDelegate = layoutDelegateFactory.create(gravity)
 
         typedArray.recycle()
     }
