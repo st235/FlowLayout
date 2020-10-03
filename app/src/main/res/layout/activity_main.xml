@@ -19,6 +19,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:fl_gravity="center" />
+        app:fl_gravity="start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

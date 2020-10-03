@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/tags.png" width="467" height="260">
+<img src="/images/tags.png" width="467" height="260">
 
 # FlowLayout
 
@@ -56,7 +56,7 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 
 | property | type | description |
 | ----- | ----- | ----- |
-| **fl_gravity** | enum | possible values is: left, right, center, justify |
+| **fl_gravity** | enum | possible values is: left, right, start, end, center, justify |
 
 ## Screens
 
