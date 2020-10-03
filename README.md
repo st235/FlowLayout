@@ -60,10 +60,10 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 
 ## Screens
 
-<img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/center.png" width="500" height="300">
- <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/left.png" width="500" height="300">
- <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/right.png" width="500" height="300">
- <img src="https://raw.githubusercontent.com/st235/FlowLayout/master/images/justify.png" width="500" height="300">
+<img src="/images/center.png" width="500" height="300">
+ <img src="/images/left.png" width="500" height="300">
+ <img src="/images/right.png" width="500" height="300">
+ <img src="/images/justify.png" width="500" height="300">
 
 
 ## License
