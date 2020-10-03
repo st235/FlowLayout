@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply from: './install.gradle'
+apply from: './publish.gradle'
 
 android {
     compileSdkVersion 30
