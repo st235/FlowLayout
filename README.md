@@ -2,11 +2,25 @@
 
 # FlowLayout
 
-[ ![Download](https://api.bintray.com/packages/st235/maven/flow-layout/images/download.svg) ](https://bintray.com/st235/maven/flow-layout/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout)
 
 Small library to support flexbox flow aligned views composition
 
 ## Download it from
+
+__Important: library was migrated from JCenter to MavenCentral__ 
+
+It means that it may be necessary to add __mavenCentral__ repository to your repositories list
+
+```groovy
+allprojects {
+    repositories {
+        // your repositories
+
+        mavenCentral()
+    }
+}
+```
 
 - Maven
 
