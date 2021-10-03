@@ -1,5 +1,6 @@
 package st235.com.github.flow_layout
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import st235.com.github.flow_layout.FlowLayout.Gravity.Companion.toGravity
 import st235.com.github.flow_layout.layout.*
 import st235.com.github.flow_layout.layout.LayoutDelegate
-import st235.com.github.flow_layout.layout.RightLayoutDelegate
 import st235.com.github.flow_layout.layout.RowInfo
 import kotlin.math.max
 
@@ -50,6 +50,7 @@ class FlowLayout @JvmOverloads constructor(
         typedArray.recycle()
     }
 
+    @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         rowsWidth.clear()
 
