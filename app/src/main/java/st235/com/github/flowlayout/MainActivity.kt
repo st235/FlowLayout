@@ -5,15 +5,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import kotlinx.android.synthetic.main.activity_main.*
+import st235.com.github.flow_layout.FlowLayout
 import st235.com.github.flow_layout.FlowLayoutParams
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var flowLayout: FlowLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        flowLayout = findViewById(R.id.flowLayout)
 
         val tags = resources.getStringArray(R.array.cats_tags)
 
