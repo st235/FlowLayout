@@ -1,5 +1,9 @@
 <img src="/images/tags.png" width="467" height="260">
 
+# Flow layout
+
+Supports default android views and **new android compose**
+
 # FlowLayout
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout)
@@ -72,7 +76,80 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 | ----- | ----- | ----- |
 | **fl_gravity** | enum | possible values is: left, right, start, end, center, justify |
 
-## Screens
+# FlowLayout Compose
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose)
+
+__This is still an experimental implementation and the work is still in progress.__
+
+## Download
+
+__Important: library was migrated from JCenter to MavenCentral__
+
+It means that it may be necessary to add __mavenCentral__ repository to your repositories list
+
+```groovy
+allprojects {
+    repositories {
+        // your repositories
+
+        mavenCentral()
+    }
+}
+```
+
+- Maven
+
+```
+<dependency>
+  <groupId>com.github.st235</groupId>
+  <artifactId>flow-layout-compose</artifactId>
+  <version>X.X.X</version>
+  <type>pom</type>
+</dependency>
+```
+
+- Gradle
+
+```
+implementation 'com.github.st235:flow-layout-compose:X.X.X'
+```
+
+- Ivy
+
+```
+<dependency org='com.github.st235' name='flow-layout-compose' rev='X.X.X'>
+  <artifact name='flow-layout' ext='pom' ></artifact>
+</dependency>
+```
+
+## Usage
+
+```kotlin
+val scroll = rememberScrollState()
+
+FlowLayout(
+    modifier = Modifier
+        .background(Color.White)
+        .verticalScroll(scroll)
+        .fillMaxWidth()
+) {
+    for (catName in stringArrayResource(id = R.array.cats_tags)) {
+        Text(
+            text = catName,
+            modifier = Modifier
+                .padding(8.dp, 4.dp)
+                .background(colorResource(id = R.color.colorGreyOp80), RoundedCornerShape(4.dp))
+                .padding(8.dp, 4.dp),
+            color = Color.White,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.padding(2.dp))
+    }
+}
+```
+
+# Screens
 
 <img src="/images/center.png" width="500" height="300">
  <img src="/images/left.png" width="500" height="300">
@@ -80,7 +157,7 @@ implementation 'com.github.st235:flow-layout:X.X.X'
  <img src="/images/justify.png" width="500" height="300">
 
 
-## License
+# License
 
 ```
 MIT License
