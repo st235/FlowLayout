@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply from: './maven.gradle'
+apply from: '../maven.gradle'
 
 android {
     compileSdkVersion 31
@@ -8,7 +8,7 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 31
-        versionCode project.property('VERSION_CODE') as int
+        versionCode 14
         versionName project.property('VERSION_NAME')
 
         consumerProguardFiles 'consumer-rules.pro'
