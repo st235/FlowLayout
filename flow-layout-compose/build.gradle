@@ -8,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 14
-        versionName project.property('VERSION_NAME')
 
         consumerProguardFiles 'consumer-rules.pro'
     }
