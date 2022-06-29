@@ -7,7 +7,7 @@
     android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
-    <st235.com.github.flow_layout.FlowLayout
+    <st235.com.github.flowlayout.FlowLayout
         android:id="@+id/flowLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
