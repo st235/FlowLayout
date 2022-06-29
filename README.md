@@ -55,7 +55,7 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 
 ```xml
 
-    <st235.com.github.flow_layout.FlowLayout
+    <st235.com.github.flowlayout.FlowLayout
         android:id="@+id/flowLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@ implementation 'com.github.st235:flow-layout:X.X.X'
         
         ... child views goes here
         
-    </st235.com.github.flow_layout.FlowLayout>
+    </st235.com.github.flowlayout.FlowLayout>
 
 ```
 
@@ -79,8 +79,6 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 # FlowLayout Compose
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose)
-
-__This is still an experimental implementation and the work is still in progress.__
 
 ## Download
 
@@ -129,6 +127,7 @@ implementation 'com.github.st235:flow-layout-compose:X.X.X'
 val scroll = rememberScrollState()
 
 FlowLayout(
+    direction = FlowLayoutDirection.START,
     modifier = Modifier
         .background(Color.White)
         .verticalScroll(scroll)
