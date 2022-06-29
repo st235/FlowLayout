@@ -150,10 +150,14 @@ FlowLayout(
 
 # Screens
 
-<img src="/images/center.png" width="500" height="300">
- <img src="/images/left.png" width="500" height="300">
- <img src="/images/right.png" width="500" height="300">
- <img src="/images/justify.png" width="500" height="300">
+| Left | Right |
+| ------------- | ------------- |
+| <img src="/images/left.png" width="250" height="150"> | <img src="/images/right.png" width="250" height="150">
+
+| Center | Justify |
+| ------------- | ------------- |
+| <img src="/images/center.png" width="250" height="150"> | <img src="/images/justify.png" width="250" height="150"> |
+
 
 
 # License
