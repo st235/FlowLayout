@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import st235.com.github.flow_layout.FlowLayout
-import st235.com.github.flow_layout.FlowLayoutParams
 
 
 class MainActivity : AppCompatActivity() {

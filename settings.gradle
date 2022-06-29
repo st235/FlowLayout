@@ -1,4 +1,2 @@
 rootProject.name='FlowLayout'
-include ':app'
-include ':flow-layout'
-include ':flow-layout-compose'
+include ':app', ':flow-layout', ':flow-layout-compose'

@@ -1,14 +1,14 @@
-package st235.com.github.flow_layout
+package st235.com.github.flowlayout
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import st235.com.github.flow_layout.FlowLayout.Gravity.Companion.toGravity
-import st235.com.github.flow_layout.layout.*
-import st235.com.github.flow_layout.layout.LayoutDelegate
-import st235.com.github.flow_layout.layout.RowInfo
+import st235.com.github.flowlayout.FlowLayout.Gravity.Companion.toGravity
+import st235.com.github.flowlayout.layout.LayoutDelegate
+import st235.com.github.flowlayout.layout.LayoutDelegateFactory
+import st235.com.github.flowlayout.layout.RowInfo
 import kotlin.math.max
 
 typealias FlowLayoutParams = ViewGroup.MarginLayoutParams
@@ -59,7 +59,7 @@ class FlowLayout @JvmOverloads constructor(
         var maxWidth = 0
         var maxHeight = 0
 
-        var currentChildCount = 0
+        var currentChildIndex = 0
         var currentState = 0
         var currentWidth = 0
         var currentHeight = 0
@@ -81,16 +81,16 @@ class FlowLayout @JvmOverloads constructor(
                 heightMeasureSpec, 0
             )
 
-            currentChildCount += 1
+            currentChildIndex += 1
             currentWidth += child.measuredWidth + horizontalMargins
 
             if (currentWidth > maxPaddedWidth) {  // wrap to a new line
-                rowsWidth.add(RowInfo(currentWidth - (child.measuredWidth + horizontalMargins), currentChildCount - 1))
+                rowsWidth.add(RowInfo(currentWidth - (child.measuredWidth + horizontalMargins), currentChildIndex - 1))
                 maxHeight += currentHeight
 
                 currentHeight = child.measuredHeight + verticalMargins
                 currentWidth = child.measuredWidth + horizontalMargins
-                currentChildCount = 1
+                currentChildIndex = 1
             } else {  // stay on the same line
                 currentHeight = max(currentHeight, child.measuredHeight + verticalMargins)
             }
@@ -100,7 +100,7 @@ class FlowLayout @JvmOverloads constructor(
             currentState = View.combineMeasuredStates(currentState, child.measuredState)
         }
 
-        rowsWidth.add(RowInfo(currentWidth, currentChildCount))
+        rowsWidth.add(RowInfo(currentWidth, currentChildIndex))
 
         // the last line was not counted
         // as it was not wrapped

@@ -1,8 +1,8 @@
-package st235.com.github.flow_layout.layout
+package st235.com.github.flowlayout.layout
 
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
-import st235.com.github.flow_layout.FlowLayout
+import st235.com.github.flowlayout.FlowLayout
 import java.util.*
 
 internal class LayoutDelegateFactory {

@@ -21,7 +21,8 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import st235.com.github.flow_layout_compose.FlowLayout
+import st235.com.github.flowlayout.compose.FlowLayout
+import st235.com.github.flowlayout.compose.FlowLayoutDirection
 import st235.com.github.flowlayout.ui.theme.FlowLayoutTheme
 
 class ComposeActivity : ComponentActivity() {
@@ -43,6 +44,7 @@ fun Root() {
     val scroll = rememberScrollState()
 
     FlowLayout(
+        direction = FlowLayoutDirection.START,
         modifier = Modifier
             .background(Color.White)
             .verticalScroll(scroll)
