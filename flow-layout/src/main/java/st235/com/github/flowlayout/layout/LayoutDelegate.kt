@@ -1,6 +1,6 @@
-package st235.com.github.flow_layout.layout
+package st235.com.github.flowlayout.layout
 
-import st235.com.github.flow_layout.FlowLayout
+import st235.com.github.flowlayout.FlowLayout
 
 internal interface LayoutDelegate {
     fun layout(parent: FlowLayout,

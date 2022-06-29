@@ -1,7 +1,7 @@
-package st235.com.github.flow_layout.layout
+package st235.com.github.flowlayout.layout
 
 import android.view.View
-import st235.com.github.flow_layout.FlowLayout
+import st235.com.github.flowlayout.FlowLayout
 import kotlin.math.max
 
 internal class JustifyLayoutDelegate: LayoutDelegate {
