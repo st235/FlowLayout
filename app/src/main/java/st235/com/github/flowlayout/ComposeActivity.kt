@@ -46,9 +46,8 @@ fun Root() {
     FlowLayout(
         direction = FlowLayoutDirection.START,
         modifier = Modifier
-            .background(Color.White)
+            .padding(top = 16.dp)
             .verticalScroll(scroll)
-            .fillMaxWidth()
     ) {
         for (catName in stringArrayResource(id = R.array.cats_tags)) {
             Text(

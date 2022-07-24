@@ -84,6 +84,8 @@ private fun AdjustableFlowLayout(
             itemsCount += 1
         }
 
+        height += rowHeight
+
         // last row
         rowInfos.add(RowInfo(rowWidth, rowHeight, itemsCount))
 
@@ -153,6 +155,8 @@ private fun JustifyFlowLayout(
             rowHeight = max(rowHeight, placeable.height)
             itemsCount += 1
         }
+
+        height += rowHeight
 
         // last row
         rowInfos.add(RowInfo(rowWidth, rowHeight, itemsCount))
@@ -240,8 +244,8 @@ enum class FlowLayoutDirection {
 
 @Composable
 fun FlowLayout(
+    modifier: Modifier = Modifier,
     direction: FlowLayoutDirection = FlowLayoutDirection.LEFT,
-    modifier: Modifier,
     content: @Composable () -> Unit
 ) {
     when (direction) {
