@@ -240,8 +240,8 @@ enum class FlowLayoutDirection {
 
 @Composable
 fun FlowLayout(
+    modifier: Modifier = Modifier,
     direction: FlowLayoutDirection = FlowLayoutDirection.LEFT,
-    modifier: Modifier,
     content: @Composable () -> Unit
 ) {
     when (direction) {
