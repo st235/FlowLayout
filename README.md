@@ -7,7 +7,7 @@ Supports default android views and **new android compose**
 # FlowLayout
 
 ![Min Android Sdk](https://img.shields.io/badge/minSdkVersion-16-212121.svg)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.st235/flow-layout.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.st235%22%20AND%20a:%22flow-layout%22)
 
 Small library to support flexbox flow aligned views composition
 
@@ -80,7 +80,7 @@ implementation 'com.github.st235:flow-layout:X.X.X'
 # FlowLayout Compose
 
 ![Min Android Sdk](https://img.shields.io/badge/minSdkVersion-21-212121.svg)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.st235/flow-layout-compose)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.st235/flow-layout-compose.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.st235%22%20AND%20a:%22flow-layout-compose%22)
 
 ## Download
 
